@@ -1,0 +1,11 @@
+node_modules
+/dist
+.netlify
+
+.*
+
+
+!.editorconfig
+!.gitignore
+!.npmrc
+!.prettierignore

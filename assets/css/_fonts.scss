@@ -1,0 +1,13 @@
+@font-face {
+  font-family: splatoon1;
+  src: url(~/assets/fonts/Splatoon1-common.woff2) format("woff2");
+  unicode-range: u+0000-007f, u+0080-00ff, u+0100-017f, u+0180-024f, u+02b0-02ff,
+    u+0300-036f, u+0370-03ff, u+04??, u+2000-206f, u+2190-21ff, u+e000-f8ff;
+}
+
+@font-face {
+  font-family: splatoon1;
+  src: url(~/assets/fonts/Splatoon1-symbol-common.woff2) format("woff2");
+  unicode-range: u+20a0-20cf, u+2100-214f, u+22??, u+23??, u+25a0-25ff, u+26??,
+    u+fb00-fb4f;
+}

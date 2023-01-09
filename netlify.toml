@@ -1,0 +1,20 @@
+[build]
+
+publish = "dist"
+edge_functions = "./edge-functions"
+
+
+[[redirects]]
+from = "https://battles-splat-report.netlify.app/*"
+to = "https://battles.splat.report/:splat"
+status = 301
+force = true
+
+[[headers]]
+  for = "_nuxt/*"
+  [headers.values]
+    Cache-Control = "public, max-age=604800"
+
+[[edge_functions]]
+path = "/api/proxy-ql"
+function = "proxy-ql"

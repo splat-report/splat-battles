@@ -1,0 +1,98 @@
+@import "./css/fonts";
+@import "./css/vars";
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    font-size: 2rem;
+
+    color: azure;
+    background-color: var(--color-background);
+  }
+
+  body {
+    @apply mx-2;
+    @apply bg-[var($--color-background)];
+  }
+
+  input[type="number"] {
+    @apply bg-slate-600 border-violet-600 border-solid border-2 rounded-sm;
+    &:hover {
+      @apply ring-1;
+    }
+    &:focus {
+      @apply outline-none ring-2 ring-violet-500 ring-opacity-75 border-violet-500;
+    }
+    @apply p-0;
+  }
+
+  button {
+    @apply py-0.5 px-1 bg-violet-600 text-white font-semibold rounded-md shadow-md;
+
+    &:hover {
+      @apply bg-violet-700;
+    }
+
+    &:focus {
+      @apply text-slate-200;
+      @apply outline-none ring-2 ring-violet-500 ring-opacity-75;
+    }
+  }
+
+  img {
+    @apply inline-block align-middle;
+  }
+
+  input[type="number"] {
+    appearance: textfield;
+  }
+}
+
+@layer components {
+  .font-spla {
+    font-family: splatoon1;
+  }
+
+  .animate-spin-counterclock {
+    animation: spin 1s linear infinite;
+  }
+
+  .animate-shake-x {
+    animation: vibrate-x 1s linear infinite;
+  }
+
+  @keyframes spin {
+    from {
+      transform: rotate(360deg);
+    }
+
+    to {
+      transform: rotate(0deg);
+    }
+  }
+
+  @keyframes vibrate-x {
+    0%,
+    100% {
+      transform: translate3d(0, 0, 0);
+    }
+
+    10%,
+    30%,
+    50%,
+    70%,
+    90% {
+      transform: translate3d(-0.1rem, 0, 0);
+    }
+
+    20%,
+    40%,
+    60%,
+    80% {
+      transform: translate3d(0.1rem, 0, 0);
+    }
+  }
+}
