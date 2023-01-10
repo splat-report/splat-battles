@@ -10,6 +10,12 @@ to = "https://battles.splat.report/:splat"
 status = 301
 force = true
 
+[[redirects]]
+from = "https://main--battles-splat-report.netlify.app/*"  # [main] is a branch name
+to = "https://battles.splat.report/:splat"
+status = 301
+force = true
+
 [[headers]]
   for = "_nuxt/*"
   [headers.values]
