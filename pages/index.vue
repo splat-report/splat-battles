@@ -4,7 +4,7 @@
   <div class="clear-both mt-8">
     <code>https://[thissite]/x-battles?sessionToken=...</code>
     <p>
-      Your session token can be taken from <a href="">...</a>
+      Related: <a href="https://session-token.splat.report">session-token.splat.report</a>
     </p>
   </div>
   <p class="my-8">
