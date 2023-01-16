@@ -3,6 +3,15 @@
 publish = "dist"
 edge_functions = "./edge-functions"
 
+[functions]
+deno_import_map = "./import_map.json"
+
+[context.staging]
+  command = "npm run generate && cp ./deploy/_headers ./dist/_headers"
+
+[context.production]
+  command = "npm run generate && cp ./deploy/_headers ./dist/_headers"
+
 
 [[redirects]]
 from = "https://battles-splat-report.netlify.app/*"
@@ -15,11 +24,6 @@ from = "https://main--battles-splat-report.netlify.app/*"  # [main] is a branch 
 to = "https://battles.splat.report/:splat"
 status = 301
 force = true
-
-[[headers]]
-  for = "_nuxt/*"
-  [headers.values]
-    Cache-Control = "public, max-age=604800"
 
 [[edge_functions]]
 path = "/api/proxy-ql"

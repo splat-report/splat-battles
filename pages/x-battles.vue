@@ -1,10 +1,10 @@
 <template>
   <div>
-    <div class="h-20">
+    <div class="mb-4 h-20">
       <div class="overflow-x-scroll">
-        <div class="w-max">
+        <div class="w-full">
           <button
-            @click="refreshContents"
+            @click="refreshBattles"
             :disabled="!bulletToken"
             class="mr-4"
           >
@@ -23,26 +23,12 @@
               class="text-4xl align-middle animate-spin-counterclock"
             />
           </span>
+
+          <span class="float-right">
+            <button class="text-xs"><MaSym i="settings" class="text"></MaSym></button>
+          </span>
         </div>
-        <div class="ml-0.5 mt-0.5">
-          <label
-            ><input
-              v-model="enableAutoFetch"
-              type="checkbox"
-              class="mr-1"
-            />every</label
-          >
-          <input
-            v-model="autoFetchInterval"
-            type="number"
-            max="3600"
-            min="10"
-            step="10"
-            class="ml-2 w-8"
-            :class="{ error: autoFetchInterval < MIN_INTERVAL_SECODNS }"
-          />
-          sec.
-        </div>
+        <Settings class="ml-0.5 mt-0.5" />
       </div>
     </div>
     <WidgetsXPowers :summary="battles?.data.xBattleHistories.summary" />
@@ -78,41 +64,6 @@ input.error {
 </style>
 
 <script setup lang="ts">
-import { PersistedQuery } from "~/ours/splat/api/constants/query";
-
-const enableAutoFetch = ref(true);
-const autoFetchInterval = ref(60);
-
-let timerId: NodeJS.Timer | undefined = void 0;
-
-const MIN_INTERVAL_SECODNS = 3;
-watch(
-  [enableAutoFetch, autoFetchInterval],
-  ([enabled, interval]) => {
-    clearInterval(timerId);
-    timerId = void 0;
-    if (!enabled) {
-      return;
-    }
-    if (interval < MIN_INTERVAL_SECODNS) {
-      return;
-    }
-
-    timerId = setInterval(refresh, interval * 1000);
-  },
-  { immediate: true }
-);
-
-async function refresh() {
-  try {
-    await refreshContents();
-  } catch (e) {
-    console.error("Caught a error. need to refresh token.", e);
-    await refreshToken();
-    // await refreshContents(); // NOTE: automatically triggerd by token refresh
-  }
-}
-
 const {
   data: bulletToken,
   refresh: refreshToken,
@@ -121,7 +72,7 @@ const {
 } = useBulletToken();
 
 const query = {
-  persistedQuery: PersistedQuery.XMatch,
+  persistedQuery: "6796e3cd5dc3ebd51864dc709d899fc5",
   variables: {},
 };
 
@@ -139,19 +90,4 @@ const anyPending = computed(() => {
 const anyError = computed(() => {
   return unref(errorToken) || unref(errorModeX);
 });
-
-async function refreshContents() {
-  await refreshBattles();
-  if (unref(anyError)) {
-    throw unref(anyError);
-  }
-}
-
-/*
-onMounted(async() => {
-  if (unref(bulletToken)) {
-    await refresh();
-  }
-});
-*/
 </script>

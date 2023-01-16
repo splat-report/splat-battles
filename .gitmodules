@@ -1,0 +1,3 @@
+[submodule "s3si.ts"]
+	path = s3si.ts
+	url = https://github.com/spacemeowx2/s3si.ts.git

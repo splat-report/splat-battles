@@ -9,7 +9,7 @@
 </style>
 
 <script setup lang="ts">
-type AnySymbol = "sync" | "sync_problem" | "magnification_small";
+type AnySymbol = "sync" | "sync_problem" | "magnification_small" | "settings";
 
 const props = defineProps<{
   i: AnySymbol;
