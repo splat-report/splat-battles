@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="w-max">
     <WidgetsSettingsRefreshInterval />
     <WidgetsSettingsDataCollection />
     <div class="fixed top-0 right-0 mr-2">
