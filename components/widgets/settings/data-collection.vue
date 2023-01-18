@@ -1,7 +1,7 @@
 <template>
   <label class="text-xs">
     <input v-model="enabled" type="checkbox" class="mr-1" />
-    Allow the site owner collect our battle data
+    Allow the site owner to collect my battle data.
   </label>
 </template>
 

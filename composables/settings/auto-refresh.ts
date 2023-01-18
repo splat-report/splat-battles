@@ -1,5 +1,5 @@
 const QUERY_PARAM = "interval";
-const DISABLE_VALUE = 'off';
+const DISABLE_VALUE = "off";
 
 const DEFAULT_ENABLED = true;
 const DEFAULT_INTERVAL = 60; // evenry 60 seconds
@@ -46,7 +46,7 @@ watch(
 );
 
 watch(toRef(route, "query"), (query) => {
-  const val =  query[QUERY_PARAM];
+  const val = query[QUERY_PARAM];
   if (!val) {
     return;
   }
@@ -55,7 +55,7 @@ watch(toRef(route, "query"), (query) => {
     return;
   }
 
-  const n = Number.parseInt('' + val);
+  const n = Number.parseInt("" + val);
   enabled.value = true;
   interval.value = Math.max(n, MIN_INTERVAL_SECODNS);
 }, { immediate: true });
@@ -81,5 +81,5 @@ function makeQueryParam(enabled: boolean, interval: number) {
   if (enabled === false) {
     return DISABLE_VALUE;
   }
-  return '' + interval;
+  return "" + interval;
 }

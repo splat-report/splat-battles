@@ -1,13 +1,9 @@
 <template>
   <div>
-    <div class="mb-4 h-20">
+    <div class="mb-4">
       <div class="overflow-x-scroll">
         <div class="w-full">
-          <button
-            @click="refreshBattles"
-            :disabled="!bulletToken"
-            class="mr-4"
-          >
+          <button @click="refreshBattles" :disabled="!bulletToken" class="mr-4">
             fetch
           </button>
           <button @click="refreshToken">refresh token</button>
@@ -25,10 +21,14 @@
           </span>
 
           <span class="float-right">
-            <button class="text-xs"><MaSym i="settings" class="text"></MaSym></button>
+            <button @click="showSettings = !showSettings" class="text-xs">
+              <MaSym i="settings" class="text"></MaSym>
+            </button>
           </span>
         </div>
-        <Settings class="ml-0.5 mt-0.5" />
+        <div v-if="showSettings" class="ml-0.5 mt-1">
+          <Settings />
+        </div>
       </div>
     </div>
     <WidgetsXPowers :summary="battles?.data.xBattleHistories.summary" />
@@ -47,6 +47,11 @@
 </template>
 
 <style scoped lang="scss">
+.v-enter-from,
+.v-leave-to {
+  opacity: 0;
+}
+
 input.error {
   @apply outline-none border-red-500;
 }
@@ -64,6 +69,8 @@ input.error {
 </style>
 
 <script setup lang="ts">
+const showSettings = ref(false);
+
 const {
   data: bulletToken,
   refresh: refreshToken,

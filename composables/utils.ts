@@ -10,25 +10,22 @@ export function getFirstQueryParameterValue(name: string): string | null {
   return value;
 }
 
-
 function nowInSeconds() {
   return Math.floor(Date.now() / 1000);
 }
 
 type CacheItem = {
-  value: any,
-  expiresAt: number,
+  value: any;
+  expiresAt: number;
 };
 
-
-function makeCacheItem(value: any, ttl = 1800/*seconds*/): CacheItem {
+function makeCacheItem(value: any, ttl = 1800 /*seconds*/): CacheItem {
   const expiresAt = nowInSeconds() + ttl;
   return {
     value,
     expiresAt,
   };
 }
-
 
 export function storeCache<T>(cacheKey: string, data: T) {
   const item = makeCacheItem(data);

@@ -1,11 +1,9 @@
-import { boolean as looksTrue } from 'boolean';
+import { boolean as looksTrue } from "boolean";
 
-const SESSION_STORAGE_KEY = 'data-collection-session';
+const SESSION_STORAGE_KEY = "data-collection-session";
 
-
-const QUERY_PARAM = 'allow-data-collection';
+const QUERY_PARAM = "allow-data-collection";
 const DEFAULT = false;
-
 
 const route = useRoute();
 
@@ -19,11 +17,11 @@ watch(appliedToUrl, () => {
   notificationTimer = setTimeout(() => appliedToUrl.value = false, 2000);
 });
 
-watch(toRef(route, 'query'), (query) => {
+watch(toRef(route, "query"), (query) => {
   enabled.value = looksTrue(query[QUERY_PARAM]);
 });
 
-watch(enabled, allowing => {
+watch(enabled, (allowing) => {
   const router = useRouter();
   if (!router) {
     return;
@@ -32,19 +30,17 @@ watch(enabled, allowing => {
   router.replace({
     query: {
       ...route.query,
-      [QUERY_PARAM]: allowing === DEFAULT ? void 0 : (allowing ? 'on' : 'off'),
+      [QUERY_PARAM]: allowing === DEFAULT ? void 0 : (allowing ? "on" : "off"),
     },
   });
 });
-
 
 export function useDataCollection() {
   return {
     enabled,
     session,
-  }
+  };
 }
-
 
 function getSessionId() {
   const existing = window.sessionStorage.getItem(SESSION_STORAGE_KEY);
