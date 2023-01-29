@@ -1,3 +1,4 @@
+import {AsyncData, FetchError} from 'nuxt/app';
 import {
   PersistedQuery,
   PersistedResponse,
@@ -15,10 +16,10 @@ const { enabled: allowDataCollection, session: dataCollectionSession } =
   useDataCollection();
 
 export function useFetchQL<
-  DataT extends PersistedSuccessResponse<Q["persistedQuery"]>,
-  Q extends Query,
->(query: Q) {
-  return useFetch<DataT>(
+  DataT = PersistedSuccessResponse<Q["persistedQuery"]>,
+  Q extends Query = Query,
+>(query: Q): AsyncData<DataT, FetchError> {
+  return useFetch(
     "https://proxy-ql-splat-report.netlify.app/api/proxy-ql",
     {
       key: `useFetchQL:${query}`,

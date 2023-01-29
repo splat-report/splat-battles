@@ -21,7 +21,6 @@
         <img src="~/assets/icons/icon-bang-placeholder.svg" />
       </span>
     </div>
-    <span v-if="xPowerAfter" class="ml-2">⇢ {{ xPowerAfter }}</span>
   </div>
 </template>
 
@@ -34,29 +33,22 @@
   @apply space-x-0.5 leading-3;
 }
 
-img {
-  .win & {
-    @apply w-2.5;
-  }
-
-  .lose & {
-    @apply w-2;
-  }
-
-  .placeholder & {
-    @apply w-2;
-  }
+.win, .lose, .placeholder {
+  @apply inline-block;
+}
+.win img {
+  @apply inline-block;
+  transform: scale(1.1);
+}
+.lose img {
+  filter: brightness(120%);
 }
 </style>
 
 <script setup lang="ts">
-import { HistoryGroupsNode } from "~~/nintendo-types/alias-x";
+import { BankaraMatchChallenge } from "~/types/bankara";
 
 const { measurement } = defineProps<{
-  measurement: HistoryGroupsNode["xMatchMeasurement"];
+  measurement: BankaraMatchChallenge,
 }>();
-
-const xPowerAfter = computed(() => {
-  return Math.floor(measurement.xPowerAfter || 0);
-});
 </script>

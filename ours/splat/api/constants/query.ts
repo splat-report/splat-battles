@@ -3,7 +3,7 @@ import {
   Queries,
   RespMap,
   XBattleHistories,
-} from "~~/s3si.ts/src/types.ts";
+} from "~/s3si.ts/src/types";
 
 export import PersistedQuery = Queries;
 

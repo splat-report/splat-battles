@@ -29,7 +29,7 @@
     @apply p-0;
   }
 
-  button {
+  button:not(.no-default) {
     @apply py-0.5 px-1 bg-violet-600 text-white font-semibold rounded-md shadow-md;
 
     &:hover {

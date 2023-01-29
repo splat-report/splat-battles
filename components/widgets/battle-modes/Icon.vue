@@ -14,25 +14,30 @@ img {
 </style>
 
 <script setup lang="ts">
-type AnyRule =
-  | "AREA"
-  | "CLAM"
-  | "TOWER"
-  | /*TOWER*/ "LOFT"
-  | "RAINMAKER"
-  | /*RAINMAKER*/ "GOAL";
+import { VsRuleLike, VsRuleRule } from '~~/types/bankara';
+
+const idMap = {
+  'VnNSdWxlLTE=': 'AREA',
+  'VnNSdWxlLTI=': 'LOFT',
+  'VnNSdWxlLTM=': 'RAINMAKER',
+  'VnNSdWxlLTQ=': 'CLAM',
+}
+type IdMap = typeof idMap;
 const UNALIAS: { [key: string]: string } = {
   LOFT: "TOWER",
   GOAL: "RAINMAKER",
 };
 
 const props = defineProps<{
-  rule: AnyRule | { rule: AnyRule };
+  rule: VsRuleLike | VsRuleRule['rule'];
 }>();
 
 const rule = computed(() => {
   if (typeof props.rule === "string") {
     return unalias(props.rule);
+  }
+  if (props.rule.id) {
+    return idMap[props.rule.id];
   }
   return unalias(props.rule.rule);
 });

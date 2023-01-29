@@ -105,6 +105,7 @@
 
 .weapon {
   @apply h-6 bg-black rounded-full;
+  filter: brightness(150%);
 }
 </style>
 
@@ -114,7 +115,7 @@ import { isBankaraChallenge, isXMatch } from "~/ours/splat/history";
 import { abbreviateStageName } from "~/ours/splat/stage";
 
 const props = defineProps<{
-  detail: HistoryDetail;
+    detail: HistoryDetail;
 }>();
 
 const judgementType = computed(() => {
