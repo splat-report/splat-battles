@@ -3,6 +3,7 @@ const PARTIAL_STAGE_SHORT_NAMES = {
   "スメーシーワールド": "スメシ",
   "マヒマヒリゾート＆スパ": "マヒマヒ",
   "ザトウマーケット": "ザトウ",
+  "マンタマリア号": "マンタ",
 } as { [name: string]: string };
 
 /** Assuming name in ja-JP */
@@ -13,7 +14,7 @@ export function abbreviateStageName(name: string) {
   }
 
   const [leadingKatakana] = name.match(/^([\p{Script=Katakana}ー]+)/gu) ||
-    ["<ORIGINAL>"];
+    [null];
   if (leadingKatakana) {
     return leadingKatakana;
   }
