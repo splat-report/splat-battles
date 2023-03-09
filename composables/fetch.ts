@@ -1,4 +1,4 @@
-import {AsyncData, FetchError} from 'nuxt/app';
+import { AsyncData, FetchError } from "nuxt/app";
 import {
   PersistedQuery,
   PersistedResponse,

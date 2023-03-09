@@ -115,7 +115,7 @@ import { isBankaraChallenge, isXMatch } from "~/ours/splat/history";
 import { abbreviateStageName } from "~/ours/splat/stage";
 
 const props = defineProps<{
-    detail: HistoryDetail;
+  detail: HistoryDetail;
 }>();
 
 const judgementType = computed(() => {

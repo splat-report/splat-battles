@@ -14,14 +14,14 @@ img {
 </style>
 
 <script setup lang="ts">
-import { VsRuleLike, VsRuleRule } from '~~/types/bankara';
+import { VsRuleLike, VsRuleRule } from "~~/types/bankara";
 
 const idMap = {
-  'VnNSdWxlLTE=': 'AREA',
-  'VnNSdWxlLTI=': 'LOFT',
-  'VnNSdWxlLTM=': 'RAINMAKER',
-  'VnNSdWxlLTQ=': 'CLAM',
-}
+  "VnNSdWxlLTE=": "AREA",
+  "VnNSdWxlLTI=": "LOFT",
+  "VnNSdWxlLTM=": "RAINMAKER",
+  "VnNSdWxlLTQ=": "CLAM",
+};
 type IdMap = typeof idMap;
 const UNALIAS: { [key: string]: string } = {
   LOFT: "TOWER",
@@ -29,7 +29,7 @@ const UNALIAS: { [key: string]: string } = {
 };
 
 const props = defineProps<{
-  rule: VsRuleLike | VsRuleRule['rule'];
+  rule: VsRuleLike | VsRuleRule["rule"];
 }>();
 
 const rule = computed(() => {
@@ -37,7 +37,7 @@ const rule = computed(() => {
     return unalias(props.rule);
   }
   if (props.rule.id) {
-    return idMap[props.rule.id];
+    return unalias(idMap[props.rule.id]);
   }
   return unalias(props.rule.rule);
 });

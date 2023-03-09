@@ -35,10 +35,14 @@
       <div class="line"></div>
       <div v-if="battles">
         <div
-          v-for="history in battles.data.bankaraBattleHistories.historyGroups.nodes"
+          v-for="history in battles.data.bankaraBattleHistories.historyGroups
+            .nodes"
           class="mt-1"
         >
-          <BattleResultModeBankaraSummary :history="history" :vs-rule="vsRule" />
+          <BattleResultModeBankaraSummary
+            :history="history"
+            :vs-rule="vsRule"
+          />
         </div>
       </div>
     </div>
@@ -68,7 +72,7 @@ input.error {
 </style>
 
 <script setup lang="ts">
-import { BankaraBattleHistories, VsHistoryDetail } from '~/types/bankara';
+import { BankaraBattleHistories, VsHistoryDetail } from "~/types/bankara";
 
 const showSettings = ref(false);
 
@@ -89,11 +93,11 @@ const {
   refresh: refreshBattles,
   pending: pendingModeX,
   error: errorModeX,
-} = useFetchQL<{data:BankaraBattleHistories}>(query);
-
+} = useFetchQL<{ data: BankaraBattleHistories }>(query);
 
 const vsRule = computed(() => {
-  const detail = battles.value?.data.bankaraBattleHistories.historyGroups.nodes[0].historyDetails.nodes[0] as VsHistoryDetail|undefined;
+  const detail = battles.value?.data.bankaraBattleHistories.historyGroups
+    .nodes[0].historyDetails.nodes[0] as VsHistoryDetail | undefined;
   return detail?.vsRule;
 });
 

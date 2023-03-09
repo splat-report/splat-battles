@@ -33,7 +33,9 @@
   @apply space-x-0.5 leading-3;
 }
 
-.win, .lose, .placeholder {
+.win,
+.lose,
+.placeholder {
   @apply inline-block;
 }
 .win img {
@@ -49,6 +51,6 @@
 import { BankaraMatchChallenge } from "~/types/bankara";
 
 const { measurement } = defineProps<{
-  measurement: BankaraMatchChallenge,
+  measurement: BankaraMatchChallenge;
 }>();
 </script>
