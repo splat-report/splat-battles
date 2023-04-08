@@ -22,7 +22,7 @@ export function useFetchQL<
   return useFetch(
     "https://proxy-ql-splat-report.netlify.app/api/proxy-ql",
     {
-      key: `useFetchQL:${query}`,
+      key: `useFetchQL:${JSON.stringify(query)}`,
       method: "POST",
       query: {
         "allow-data-collection": unref(allowDataCollection) ? "on" : void 0,

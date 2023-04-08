@@ -48,7 +48,7 @@
 </style>
 
 <script setup lang="ts">
-import { BankaraMatchChallenge } from "~/types/bankara";
+import { BankaraMatchChallenge } from "~~/types/battles.js";
 
 const { measurement } = defineProps<{
   measurement: BankaraMatchChallenge;

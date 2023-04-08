@@ -1,10 +1,7 @@
 <template>
   <div>
     <div class="font-mono text-sm mb-0.5">
-      <WidgetsBattleModesIcon
-        :rule="props.vsRule"
-        class="inline-block w-6 mr-1"
-      />
+      <WidgetsBattleModesIcon :rule="vsRule" class="inline-block w-6 mr-1" />
       <WidgetsBankaraMeasurement
         v-if="history.bankaraMatchChallenge"
         :measurement="history.bankaraMatchChallenge"
@@ -31,14 +28,12 @@ import type {
   HistoryGroupItem,
   BattleListNode,
   VsRuleLike,
-} from "~/types/bankara";
+  BankaraBattleHistories,
+} from "~~/types/battles.js";
 
 const props = defineProps<{
-  history: HistoryGroupItem<BattleListNode>;
-  vsRule: VsRuleLike;
+  history: BankaraBattleHistories["bankaraBattleHistories"]["historyGroups"]["nodes"][0];
 }>();
 
-const pointUp = computed(
-  () => props.history.bankaraMatchChallenge?.earnedUdemaePoint
-);
+const vsRule = computed(() => props.history.historyDetails.nodes[0].vsRule);
 </script>

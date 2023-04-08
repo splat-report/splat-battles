@@ -14,7 +14,7 @@ img {
 </style>
 
 <script setup lang="ts">
-import { VsRuleLike, VsRuleRule } from "~~/types/bankara";
+import { VsRuleLike, VsRuleRule } from "~~/types/battles.js";
 
 const idMap = {
   "VnNSdWxlLTE=": "AREA",

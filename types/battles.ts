@@ -3,6 +3,7 @@ export {
   BankaraMatchChallenge,
   BattleListNode,
   HistoryGroupItem,
+  HistoryGroups,
   VsHistoryDetail,
 } from "~/s3si.ts/src/types";
 

@@ -1,4 +1,7 @@
 .*
 
+/.nuxt/
+/.output/
+/dist/
 
 *.ts
