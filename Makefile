@@ -26,12 +26,12 @@ deploy-publish: init lint
 
 
 .PHONY: init
-init: node_modules/.modules.yaml
+init: node_modules/.package-lock.json
 
 
-node_modules/.modules.yaml: pnpm-lock.yaml
-	npx pnpm install
-	touch node_modules/.modules.yaml
+node_modules/.package-lock.json: package-lock.json
+	npm ci
+	touch node_modules/.package-lock.json
 
 
 ##############################################
