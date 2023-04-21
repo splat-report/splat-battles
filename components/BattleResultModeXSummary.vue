@@ -10,7 +10,7 @@
         class="inline-block"
       />
     </div>
-    <div v-for="detail in history.historyDetails.nodes">
+    <div v-for="detail in history.historyDetails.nodes" :key="detail.id">
       <BattleResultSummary :detail="detail" />
     </div>
   </div>
@@ -19,9 +19,9 @@
 <style lang="scss" scoped></style>
 
 <script setup lang="ts">
-import type { HistoryGroupsNode } from "~~/nintendo-types/alias-x";
+import type { XBattleHistories } from "~/types/battles";
 
 const props = defineProps<{
-  history: HistoryGroupsNode;
+  history: XBattleHistories['xBattleHistories']['historyGroups']['nodes'][0];
 }>();
 </script>

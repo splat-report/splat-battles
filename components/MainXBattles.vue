@@ -37,6 +37,7 @@
       <div v-if="battles">
         <div
           v-for="history in battles.data.xBattleHistories.historyGroups.nodes"
+          :key="makeHistoryGroupKey(history)"
           class="mt-1"
         >
           <BattleResultModeXSummary :history="history" />
@@ -69,6 +70,8 @@ input.error {
 </style>
 
 <script setup lang="ts">
+import { XBattleHistories} from '~/types/battles';
+
 const showSettings = ref(false);
 
 const {
@@ -88,7 +91,7 @@ const {
   refresh: refreshBattles,
   pending: pendingModeX,
   error: errorModeX,
-} = useFetchQL(query);
+} = useFetchQL<{ data: XBattleHistories}>(query);
 
 const anyPending = computed(() => {
   return unref(pendingToken) || unref(pendingModeX);
@@ -97,4 +100,9 @@ const anyPending = computed(() => {
 const anyError = computed(() => {
   return unref(errorToken) || unref(errorModeX);
 });
+
+
+function makeHistoryGroupKey(history: XBattleHistories['xBattleHistories']['historyGroups']['nodes'][0]) {
+  return history.historyDetails.nodes[0].id;
+}
 </script>

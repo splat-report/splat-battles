@@ -5,6 +5,10 @@ MAKEFLAGS += --warn-undefined-variables
 
 ##############################################
 
+.PHONY: test
+test:
+	npx vitest
+
 
 .PHONY: dev
 dev: init

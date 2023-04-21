@@ -1,4 +1,5 @@
 export {
+  XBattleHistories,
   BankaraBattleHistories,
   BankaraMatchChallenge,
   BattleListNode,
