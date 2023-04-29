@@ -7,7 +7,9 @@ const QUERY_SESSION_TOKEN = "sessionToken"; // ?sessionToken=...
 const IKSM_BULLET_URL = "https://splat-iksm-token.netlify.app/bullet"; // TODO: useRuntimeConfig()
 type BulletTokenRes = { bulletToken: { token: string } };
 
-const sessionToken: Ref<string> = ref(getFirstQueryParameterValue(QUERY_SESSION_TOKEN) || '');
+const sessionToken: Ref<string> = ref(
+  getFirstQueryParameterValue(QUERY_SESSION_TOKEN) || "",
+);
 let onceLoaded = false;
 
 const { data: bulletToken, refresh, pending, error } = useFetch<BulletTokenRes>(

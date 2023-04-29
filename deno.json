@@ -1,7 +1,12 @@
 {
   "fmt": {
     "files": {
-      "exclude": [".netlify"]
+      "exclude": [".netlify", "s3si.ts"]
+    }
+  },
+  "lint": {
+    "files": {
+      "exclude": [".netlify", ".nuxt", "s3si.ts"]
     }
   }
 }

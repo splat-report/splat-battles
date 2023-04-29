@@ -70,7 +70,7 @@ input.error {
 </style>
 
 <script setup lang="ts">
-import { XBattleHistories} from '~/types/battles';
+import { XBattleHistories } from "~/types/battles";
 
 const showSettings = ref(false);
 
@@ -91,7 +91,7 @@ const {
   refresh: refreshBattles,
   pending: pendingModeX,
   error: errorModeX,
-} = useFetchQL<{ data: XBattleHistories}>(query);
+} = useFetchQL<{ data: XBattleHistories }>(query);
 
 const anyPending = computed(() => {
   return unref(pendingToken) || unref(pendingModeX);
@@ -101,8 +101,9 @@ const anyError = computed(() => {
   return unref(errorToken) || unref(errorModeX);
 });
 
-
-function makeHistoryGroupKey(history: XBattleHistories['xBattleHistories']['historyGroups']['nodes'][0]) {
+function makeHistoryGroupKey(
+  history: XBattleHistories["xBattleHistories"]["historyGroups"]["nodes"][0]
+) {
   return history.historyDetails.nodes[0].id;
 }
 </script>

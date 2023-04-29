@@ -1,11 +1,11 @@
 export {
-  XBattleHistories,
   BankaraBattleHistories,
   BankaraMatchChallenge,
   BattleListNode,
   HistoryGroupItem,
   HistoryGroups,
   VsHistoryDetail,
+  XBattleHistories,
 } from "~/s3si.ts/src/types";
 
 type VsRule =

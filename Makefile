@@ -16,17 +16,22 @@ dev: init
 
 
 .PHONY: deploy-preview
-deploy-preview: init lint
+deploy-preview: init lint generate
 	DEBUG='*' npx netlify-cli deploy
 
 
 .PHONY: deploy-publish
-deploy-publish: init lint
+deploy-publish: init lint generate
 	DEBUG='*' npx netlify-cli deploy --prod
 
 
 .PHONY: init
 init: node_modules/.package-lock.json
+
+
+.PHONY: generate
+generate:
+	npm run generate
 
 
 node_modules/.package-lock.json: package-lock.json

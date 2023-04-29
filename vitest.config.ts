@@ -1,8 +1,8 @@
-import { defineConfig } from 'vitest/config'
+import { defineConfig } from "vitest/config";
 
 export default defineConfig({
   test: {
-    name: 'tests',
-    root: './tests',
+    name: "tests",
+    root: "./tests",
   },
 });

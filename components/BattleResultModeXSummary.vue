@@ -22,6 +22,6 @@
 import type { XBattleHistories } from "~/types/battles";
 
 const props = defineProps<{
-  history: XBattleHistories['xBattleHistories']['historyGroups']['nodes'][0];
+  history: XBattleHistories["xBattleHistories"]["historyGroups"]["nodes"][0];
 }>();
 </script>
