@@ -4,6 +4,7 @@ const PARTIAL_STAGE_SHORT_NAMES = {
   "マヒマヒリゾート＆スパ": "マヒマヒ",
   "ザトウマーケット": "ザトウ",
   "マンタマリア号": "マンタ",
+  "タラポートショッピングパーク": "タラポート",
 } as { [name: string]: string };
 
 /** Assuming name in ja-JP */
