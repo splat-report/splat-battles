@@ -1,7 +1,7 @@
 <template>
   <div>
     <div class="font-mono text-sm mb-0.5">
-      <WidgetsBattleModesIcon :rule="vsRule" class="inline-block w-6 mr-1" />
+      <WidgetsBattleRulesIcon :rule="vsRule" class="inline-block w-6 mr-1" />
       <WidgetsBankaraMeasurement
         v-if="history.bankaraMatchChallenge"
         :measurement="history.bankaraMatchChallenge"

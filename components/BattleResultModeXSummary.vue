@@ -1,7 +1,7 @@
 <template>
   <div>
     <div class="font-mono text-sm mb-0.5">
-      <WidgetsBattleModesIcon
+      <WidgetsBattleRulesIcon
         :rule="history.xMatchMeasurement.vsRule"
         class="inline-block w-6 mr-1"
       />

@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { HistoryGroups, BattleListNode } from "~~/types/battles";
+import { RequestId } from "splatnet3-types/splatnet3";
 
 type Response = {
   data: {
@@ -9,10 +10,16 @@ type Response = {
   };
 };
 
-const { data: latest } = useFetchQL<Response>({
-  persistedQuery: "0329c535a32f914fd44251be1f489e24",
-  variables: {},
-});
+const query = {
+    "extensions": {
+        "persistedQuery": {
+            "version": 1,
+            "sha256Hash": RequestId.PagerLatestVsDetailQuery,
+        }
+    },
+    "variables": {}
+};
+const { data: latest } = useFetchQL<Response>(query);
 
 const vsMode = computed(
   () =>

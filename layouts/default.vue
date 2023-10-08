@@ -1,4 +1,7 @@
 <template>
+  <Head>
+    <link rel="icon" href="data:;base64,iVBORw0KGgo=">
+  </Head>
   <Link rel="icon" href="/favicon.ico" type="image/x-icon" />
   <Link
     rel="stylesheet"

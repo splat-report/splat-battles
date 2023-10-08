@@ -24,12 +24,6 @@ export function useFetchQL<
     {
       key: `useFetchQL:${JSON.stringify(query)}`,
       method: "POST",
-      query: {
-        "allow-data-collection": unref(allowDataCollection) ? "on" : void 0,
-        "data-collection-session":
-          (unref(allowDataCollection) && unref(dataCollectionSession)) ||
-          void 0,
-      },
       headers: {
         "Authorization": computed(() => `Bearer ${unref(token)}`),
       },

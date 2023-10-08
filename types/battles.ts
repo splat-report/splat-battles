@@ -1,4 +1,4 @@
-export {
+import {
   BankaraBattleHistories,
   BankaraMatchChallenge,
   BattleListNode,
@@ -6,21 +6,15 @@ export {
   HistoryGroups,
   VsHistoryDetail,
   XBattleHistories,
+  VsRule,
 } from "~/s3si.ts/src/types";
 
-type VsRule =
-  | "AREA"
-  | "CLAM"
-  | "TOWER"
-  | /*TOWER*/ "LOFT"
-  | "RAINMAKER"
-  | /*RAINMAKER*/ "GOAL";
+export {
+  BankaraBattleHistories,
+  HistoryGroupItem,
+  VsHistoryDetail,
+}
 
-type VsRuleIdArea = "VnNSdWxlLTE=";
-type VsRuleId = {
-  id: VsRuleIdArea;
-};
-export type VsRuleRule = {
-  rule: VsRule;
-};
-export type VsRuleLike = VsRuleId | VsRuleRule;
+export type VsRuleLike = {
+  id: VsHistoryDetail['vsRule']['id']
+} | { rule: VsHistoryDetail['vsRule']['rule'] };

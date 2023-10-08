@@ -1,5 +1,6 @@
 <template>
   <span>
+    <img v-if="rule === 'REGULAR'" src="~/assets/icons/icon-regular.svg" />
     <img v-if="rule === 'AREA'" src="~/assets/icons/icon-area.svg" />
     <img v-if="rule === 'CLAM'" src="~/assets/icons/icon-clam.svg" />
     <img v-if="rule === 'TOWER'" src="~/assets/icons/icon-tower.svg" />
@@ -14,9 +15,15 @@ img {
 </style>
 
 <script setup lang="ts">
-import { VsRuleLike, VsRuleRule } from "~~/types/battles.js";
+import { VsRuleLike } from "~~/types/battles.js";
+
+const props = defineProps<{
+  rule: VsRuleLike | string;
+}>();
+
 
 const idMap = {
+  "VnNSdWxlLTA=": "REGULAR",
   "VnNSdWxlLTE=": "AREA",
   "VnNSdWxlLTI=": "LOFT",
   "VnNSdWxlLTM=": "RAINMAKER",
@@ -24,13 +31,10 @@ const idMap = {
 };
 type IdMap = typeof idMap;
 const UNALIAS: { [key: string]: string } = {
+  TURF_WAR: "REGULAR",
   LOFT: "TOWER",
   GOAL: "RAINMAKER",
 };
-
-const props = defineProps<{
-  rule: VsRuleLike | VsRuleRule["rule"];
-}>();
 
 const rule = computed(() => {
   if (typeof props.rule === "string") {

@@ -1,19 +1,19 @@
 <template>
   <div class="x-powers">
     <span>
-      <WidgetsBattleModesIcon rule="AREA" /> =
+      <WidgetsBattleRulesIcon rule="AREA" /> =
       <span class="num">{{ formatXPower(summary?.xPowerAr?.lastXPower) }}</span>
     </span>
     <span>
-      <WidgetsBattleModesIcon rule="TOWER" /> =
+      <WidgetsBattleRulesIcon rule="TOWER" /> =
       <span class="num">{{ formatXPower(summary?.xPowerLf?.lastXPower) }}</span>
     </span>
     <span>
-      <WidgetsBattleModesIcon rule="RAINMAKER" /> =
+      <WidgetsBattleRulesIcon rule="RAINMAKER" /> =
       <span class="num">{{ formatXPower(summary?.xPowerGl?.lastXPower) }}</span>
     </span>
     <span>
-      <WidgetsBattleModesIcon rule="CLAM" /> =
+      <WidgetsBattleRulesIcon rule="CLAM" /> =
       <span class="num">{{ formatXPower(summary?.xPowerCl?.lastXPower) }}</span>
     </span>
   </div>

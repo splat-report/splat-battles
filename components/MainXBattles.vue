@@ -71,6 +71,7 @@ input.error {
 
 <script setup lang="ts">
 import { XBattleHistories } from "~/types/battles";
+import { RequestId } from "splatnet3-types/splatnet3";
 
 const showSettings = ref(false);
 
@@ -82,8 +83,13 @@ const {
 } = useBulletToken();
 
 const query = {
-  persistedQuery: "6796e3cd5dc3ebd51864dc709d899fc5",
-  variables: {},
+    "extensions": {
+        "persistedQuery": {
+            "version": 1,
+            "sha256Hash": RequestId.XBattleHistoriesQuery,
+        }
+    },
+    "variables": {},
 };
 
 const {

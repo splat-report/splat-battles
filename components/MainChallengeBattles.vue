@@ -8,16 +8,10 @@
           </button>
           <button @click="refreshToken">refresh token</button>
           <span v-if="anyError">
-            <MaSym
-              i="sync_problem"
-              class="text-red-500 align-middle animate-shake-x"
-            />
+            <MaSym i="sync_problem" class="text-red-500 align-middle animate-shake-x" />
           </span>
           <span v-if="anyPending">
-            <MaSym
-              i="sync"
-              class="text-4xl align-middle animate-spin-counterclock"
-            />
+            <MaSym i="sync" class="text-4xl align-middle animate-spin-counterclock" />
           </span>
 
           <span class="float-right">
@@ -27,19 +21,17 @@
           </span>
         </div>
         <div v-if="showSettings" class="ml-0.5 mt-1">
-          <!--<Settings />-->
+          <Settings />
         </div>
       </div>
     </div>
     <div class="main">
       <div class="line"></div>
       <div v-if="battles">
-        <div
-          v-for="history in battles.data.bankaraBattleHistories.historyGroups
-            .nodes"
-          class="mt-1"
-        >
-          <BattleResultModeBankaraSummary :history="history" />
+        <h2></h2>
+        <div v-for="history in battles.data.eventBattleHistories.historyGroups.nodes" :key="makeHistoryGroupKey(history)"
+          class="mt-1">
+          <BattleResultModeLeague :history="history" />
         </div>
       </div>
     </div>
@@ -69,7 +61,7 @@ input.error {
 </style>
 
 <script setup lang="ts">
-import { BankaraBattleHistories, VsHistoryDetail } from "~~/types/battles.js";
+import { XBattleHistories } from "~/types/battles";
 import { RequestId } from "splatnet3-types/splatnet3";
 
 const showSettings = ref(false);
@@ -82,23 +74,21 @@ const {
 } = useBulletToken();
 
 const query = {
-    "extensions": {
-        "persistedQuery": {
-            "version": 1,
-            "sha256Hash": RequestId.BankaraBattleHistoriesQuery,
-        }
+  "extensions": {
+    "persistedQuery": {
+      "version": 1,
+      "sha256Hash": RequestId.EventBattleHistoriesQuery,
     },
-    "variables": {}
-};
+  },
+  "variables": {},
+}
 
 const {
   data: battles,
   refresh: refreshBattles,
   pending: pendingModeX,
   error: errorModeX,
-} = useFetchQL<{ data: BankaraBattleHistories }>(query);
-
-//watch(trigger, async() => await refreshBattles());
+} = useFetchQL<{ data: any }>(query);
 
 const anyPending = computed(() => {
   return unref(pendingToken) || unref(pendingModeX);
@@ -107,4 +97,10 @@ const anyPending = computed(() => {
 const anyError = computed(() => {
   return unref(errorToken) || unref(errorModeX);
 });
+
+function makeHistoryGroupKey(
+  history: XBattleHistories["xBattleHistories"]["historyGroups"]["nodes"][0]
+) {
+  return history.historyDetails.nodes[0].id;
+}
 </script>

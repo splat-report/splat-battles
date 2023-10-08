@@ -16,7 +16,7 @@
           </p>
           <p
             v-else-if="
-              !isExceptionalJudgement && ['WIN', 'LOSE'].includes(judgementType)
+              !isExceptionalJudgement && ['WIN', 'LOSE'].includes(judgementType) && detail.myTeam.result?.score != null
             "
           >
             Score:
@@ -110,12 +110,12 @@
 </style>
 
 <script setup lang="ts">
-import { HistoryDetail } from "~/nintendo-types/alias";
+import { VsHistoryDetail } from "~/types/battles";
 import { isBankaraChallenge, isXMatch } from "~/ours/splat/history";
 import { abbreviateStageName } from "~/ours/splat/stage";
 
 const props = defineProps<{
-  detail: HistoryDetail;
+  detail: VsHistoryDetail;
 }>();
 
 const judgementType = computed(() => {
